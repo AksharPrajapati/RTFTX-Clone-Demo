@@ -3,6 +3,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls, softShadows, useGLTF } from '@react-three/drei'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { EffectComposer, Glitch, Scanline } from "@react-three/postprocessing";
+import { GlitchMode } from "postprocessing";
 
 gsap.registerPlugin(ScrollTrigger)
 function Thing({ anim, animSphere }) {
@@ -22,6 +24,23 @@ function Thing({ anim, animSphere }) {
   )
 }
 
+function Effects() {
+  return (
+    <EffectComposer>
+      <Glitch
+        delay={[2, 4]}
+        duration={[0, 0.6]}
+        strength={[0.1, 0.2]}
+        mode={GlitchMode.SPORADIC} // try CONSTANT_MILD
+        active // toggle on/off
+        ratio={0.1}
+      />  
+    <Scanline density={1.0} />
+    </EffectComposer>)
+}
+
+ 
+
 function Canvas3D({ mainRef }) {
 
   let animable = {
@@ -38,7 +57,7 @@ function Canvas3D({ mainRef }) {
         scrollTrigger: {
           trigger: '.section-one',
           start: 'top top',
-          endTrigger: '.section-four',
+          endTrigger: '.section-seven',
           end: 'bottom bottom',
           scrub: 1,
         }
@@ -77,10 +96,11 @@ function Canvas3D({ mainRef }) {
   }, [mainRef])
 
   return (
-    <Canvas shadowMap camera={{ position: [0, 0, 10] }}>
+    <Canvas shadowMap camera={{ position: [0, 0, 10] }} style={{zIndex: '-1', backgroundColor:'black'}}>
       <ambientLight intensity={0.3} />
       <spotLight intensity={0.3} angle={0.1} penumbra={1} position={[5, 25, 20]} />
       <Thing anim={animable} animSphere={animableSphere} />
+      <Effects />
     </Canvas>
   )
 }

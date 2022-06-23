@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Canvas3D from './Components/Canvas3D'
 import Content from './Components/Content'
+import Header from './Components/Header'
 
 
 function App() {
@@ -12,12 +13,16 @@ function App() {
   }, [main])
 
   return (
+    <>
+    <Header/>
     <main ref={ref}>
+     
      <div className="canvas3D">
         <Canvas3D mainRef={main} />
      </div>
      <Content />
      </main> 
+     </>
   )
 }
 
