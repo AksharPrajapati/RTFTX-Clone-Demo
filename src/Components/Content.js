@@ -6,7 +6,7 @@ import '../Styles/content.scss'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function Content() {
+function Content({ onWalletConnect }) {
   const ref = useRef()
 
   return (
@@ -97,6 +97,7 @@ function Content() {
                 <h4>A COLLABORATION WITH</h4>
               </div>
               <p className="desc">MURAKAMI</p>
+              <img src="/images/r-murakami.jpeg" style={{ height: '318px', width: '565px' }} />
               <p className="intro">
                 We have been working in secret with our Idol, Takashi Murakami, as a special collaborator, bringing his iconic designs to
                 the Avatars. From Eyes, Mouths, Helmets to Clothes, these avatars will have a special Murakami Drip property defined on the
@@ -108,37 +109,45 @@ function Content() {
       </div>
       <div className="bottom-section">
         <section className="roadmap">
-          <div className="textWrapper">
-            <div style={{ borderBottom: 'gray 1px solid' }}>
-              <div>
-                <p className="desc">ROADMAP</p>
+          <div className="textWrapper" style={{ marginTop: '-30%' }}>
+            <div>
+              <div style={{ width: '35%', textAlign: 'center', margin: 'auto' }}>
+                <p className="desc" style={{ marginBottom: 0, paddingBottom: 0 }}>
+                  ROADMAP
+                </p>
                 <p className="intro">Clone X Roadmap is centered around using your Clone accross worlds and realities.</p>
               </div>
-              <div style={{ display: 'flex' }}>
-                <div>
-                  <p className="desc">METAVERSE READY</p>
+              <div className="roadmap-points">
+                <div className="point">
+                  <p className="desc point title">METAVERSE READY</p>
                   <p className="intro">we’ve built a Clone.meta vault to give you access to 3D files to use across platforms.</p>
                 </div>
-                <div>
-                  <p className="desc">FORGING EVENTS</p>
+                <div className="point">
+                  <p className="desc point title">FORGING EVENTS</p>
                   <p className="intro">Forge unique physical collectibles created from your Clone, get that crazy jacket IRL.</p>
                 </div>
-              </div>
-              <div style={{ display: 'flex' }}>
-                <div>
-                  <p className="desc">METAVERSE READY</p>
+                <div className="point">
+                  <p className="desc point title">METAVERSE READY</p>
                   <p className="intro">we’ve built a Clone.meta vault to give you access to 3D files to use across platforms.</p>
                 </div>
-                <div>
-                  <p className="desc">FORGING EVENTS</p>
+                <div className="point">
+                  <p className="desc point title">FORGING EVENTS</p>
                   <p className="intro">Forge unique physical collectibles created from your Clone, get that crazy jacket IRL.</p>
                 </div>
               </div>
             </div>
-            <div>
-              <p className="title">TRAJECTORY</p>
-              <p className="desc">2021 SPACE PODS</p>
-              <p className="intro">we’ve built a Clone.meta vault to give you access to 3D files to use across platforms.</p>
+            <div className="roadmap-slider">
+              <div className="roadmap-slider text">
+                <h4 className="title">TRAJECTORY</h4>
+                <h3 className="desc">2021 SPACE PODS</h3>
+                <p className="intro">
+                  Your space to customise and upgrade, to show off you NFT’s and hang out with your clone frens, in space. <br /> Powered by
+                  OnCyber, exclusive to Clone X owners.
+                </p>
+              </div>
+              <div style={{ margin: 'auto' }}>
+                <img src="/images/s1.png" />
+              </div>
             </div>
           </div>
         </section>
@@ -147,7 +156,7 @@ function Content() {
             <div>
               <p className="desc">REVEAL YOUR DNA</p>
               <p className="intro">Public sale is closed now.</p>
-              <button>REVEAL</button>
+              <button onClick={onWalletConnect}>REVEAL</button>
             </div>
           </div>
         </section>
@@ -155,26 +164,27 @@ function Content() {
           <div className="textWrapper">
             <div className="footer-content">
               <div className="footer-content left">
-                <p className="intro">
+                <p className="intro" style={{ width: '75%' }}>
                   We are a creator led organisation. RTFKT uses the latest in game engines, NFT , blockchain authentication and augmented
                   reality, combined with manufacturing expertise to create one of a kind sneakers and digital artifacts.
                 </p>
               </div>
               <div className="footer-content right">
-                <div>
+                <div className="links">
                   <ul>
                     <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
+                    <li className="intro">Privacy policy</li>
+                    <li className="intro">Terms of Services</li>
+                    <li className="intro">Legal Overview</li>
                   </ul>
                 </div>
-                <div>
+                <div className="social-links">
                   <ul>
-                    <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
-                    <li className="intro">Main Website</li>
+                    <li className="intro">Instagram</li>
+                    <li className="intro">Discord</li>
+                    <li className="intro">Twitter</li>
+                    <li className="intro">Youtube</li>
+                    <li className="intro">Tiktok</li>
                   </ul>
                 </div>
               </div>

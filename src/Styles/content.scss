@@ -82,5 +82,70 @@
   }
   .right {
     width: 50%;
+    .links {
+      margin-right: 10%;
+    }
+    ul {
+      list-style: none;
+      li:not(:first-child) {
+        padding-top: 15px;
+      }
+    }
+  }
+}
+
+.roadmap-points {
+  display: flex;
+  flex-wrap: wrap;
+  // width: 90%;
+}
+
+.point {
+  width: 45%;
+  margin: auto;
+  margin-top: 62px;
+  .title {
+    margin-bottom: 8px;
+    font-size: 32px;
+    padding-bottom: 0;
+  }
+  p {
+    width: 85%;
+    margin: auto;
+  }
+  //margin-left: 0;
+}
+
+.access {
+  text-align: center;
+  .desc {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  button {
+    margin-top: 40px;
+  }
+}
+
+.roadmap-slider {
+  display: flex;
+  margin-top: 10%;
+  .text {
+    flex-direction: column;
+    max-width: 30%;
+    h4 {
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    h3 {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      margin-top: 24px;
+      font-size: 30px;
+    }
+  }
+  img {
+    height: 460px;
+    width: 460px;
   }
 }
