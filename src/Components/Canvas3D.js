@@ -5,19 +5,14 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { EffectComposer, Glitch, Scanline } from '@react-three/postprocessing'
 import { GlitchMode } from 'postprocessing'
-import { SpotLightHelper } from 'three'
+import { SpotLightHelper, Vector3 } from 'three'
 import * as THREE from 'three'
 
 gsap.registerPlugin(ScrollTrigger)
 function Thing({ anim, animSphere }) {
   const { nodes, materials, scene, animations } = useGLTF('/akira.glb')
+  // console.log(materials)
   scene.scale.set(13, 13, 13)
-  // scene.scale.set(5, 5, 5)
-
-  // scene.rotation.set(0, 0, 0.1)
-  scene.position.y = -11.5
-  // scene.rotation.y = 0
-  scene.rotation.x = 1
 
   let mixer
   useEffect(() => {
@@ -25,28 +20,24 @@ function Thing({ anim, animSphere }) {
       mixer = new THREE.AnimationMixer(scene)
       const action = mixer.clipAction(animations[2])
       const action1 = mixer.clipAction(animations[1])
+      const action0 = mixer.clipAction(animations[0])
 
       action.play()
       action1.play()
-      // animations.forEach((clip) => {
-      //   const action = mixer.clipAction(clip)
-      //   action.play()
-      // })
+      action0.play()
     }
   }, [animations])
 
   useFrame((state, delta) => {
     mixer?.update(delta)
-    scene.rotation.y = -1 * anim.y
-    // scene.scale.x = -1 * anim.x
+    scene.position.y = anim.py
+    scene.scale.x = anim.x
+    scene.scale.y = anim.x
+    scene.scale.z = anim.x
+    scene.rotation.x = anim.rx
+    scene.rotation.y = anim.ry
   })
 
-  // useFrame(() => {
-  //   // console.log(anim.y * -1)
-  //   scene.rotation.y = -1 * anim.y
-  //   // scene.scale.x = -1 * anim.x
-  //   // scene.scale.z = -1 * anim.x
-  // })
   return <primitive object={scene} />
 }
 
@@ -68,8 +59,11 @@ function Effects() {
 
 function Canvas3D({ mainRef }) {
   let animable = {
-    x: -8,
-    y: 0
+    x: 12.5,
+    y: 0,
+    py: -11.5,
+    rx: 1,
+    ry: 0
   }
   let animableSphere = {
     y: 0
@@ -87,15 +81,19 @@ function Canvas3D({ mainRef }) {
         }
       })
       tl1.to(animable, {
-        x: 8,
-        y: 2
+        x: 7,
+        y: 2,
+        py: -5,
+        rx: 0.5,
+        ry: -1.7
       })
-      // gsap.to('.scaleDown', {
-      //   scale: 0.6667,
+      // gsap.to('.section-one', {
       //   scrollTrigger: {
-      //     trigger: '.canvas',
-      //     pin: '.canvas',
-      //     scrub: true
+      //     trigger: '.section-one',
+      //     // endTrigger: '.section-two',
+      //     onUpdate: () => {
+      //       console.log('Hii')
+      //     }
       //   }
       // })
       // const tl3 = gsap.timeline({
